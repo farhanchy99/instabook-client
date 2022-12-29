@@ -15,7 +15,7 @@ const About = () => {
     const { data: usersData =[]} = useQuery({
         queryKey: ['usersData'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/userdata?email=${user?.email}`);
+            const res = await fetch(`https://instabook-server.vercel.app/userdata?email=${user?.email}`);
             const data = await res.json();
             return data;
         }

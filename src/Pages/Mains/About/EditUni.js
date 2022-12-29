@@ -10,7 +10,7 @@ const EditUni = ({modal}) => {
 
     useEffect(() => {
         fetch(
-          `http://localhost:5000/userdata?email=${user?.email}`
+          `https://instabook-server.vercel.app/userdata?email=${user?.email}`
         )
           .then((res) => res.json())
           .then((data) => setReviews(data));
@@ -20,7 +20,7 @@ const EditUni = ({modal}) => {
         setNewUni(event.target.value);
       };
       const HandleUpdate = (id) => {
-        fetch(`http://localhost:5000/edituni/${id}`, {
+        fetch(`https://instabook-server.vercel.app/edituni/${id}`, {
           method: "PATCH",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ updatedUni: newUni}),

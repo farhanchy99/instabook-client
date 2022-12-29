@@ -4,14 +4,13 @@ import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const CommentData = () => {
-    //const [posts, setPosts] = useState([]);
     const {user} = useContext(AuthContext)
     const{_id} = useLoaderData();
 
     const { data: comments =[]} = useQuery({
         queryKey: ['comments'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/comments?postId=${_id}`);
+            const res = await fetch(`https://instabook-server.vercel.app/comments?postId=${_id}`);
             const data = await res.json();
             return data;
         }

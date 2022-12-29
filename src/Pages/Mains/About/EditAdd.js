@@ -10,7 +10,7 @@ const EditAdd = ({modal}) => {
 
     useEffect(() => {
         fetch(
-          `http://localhost:5000/userdata?email=${user?.email}`
+          `https://instabook-server.vercel.app/userdata?email=${user?.email}`
         )
           .then((res) => res.json())
           .then((data) => setReviews(data));
@@ -20,7 +20,7 @@ const EditAdd = ({modal}) => {
         setNewAdd(event.target.value);
       };
       const HandleUpdate = (id) => {
-        fetch(`http://localhost:5000/editadd/${id}`, {
+        fetch(`https://instabook-server.vercel.app/editadd/${id}`, {
           method: "PATCH",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ updatedAdd: newAdd}),

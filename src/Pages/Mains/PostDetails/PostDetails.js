@@ -32,7 +32,7 @@ const PostDetails = () => {
             time: moment().format('MMMM Do YYYY, h:mm:ss a'),
         }
 
-        fetch('http://localhost:5000/comments', {
+        fetch('https://instabook-server.vercel.app/comments', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
@@ -44,7 +44,7 @@ const PostDetails = () => {
             console.log(data)
             if(data.acknowledged){
                 swal({
-                    title: "Order Added Successfully",
+                    title: "Comment Added Successfully",
                     button: "OK",
                     icon: "success"
                   });

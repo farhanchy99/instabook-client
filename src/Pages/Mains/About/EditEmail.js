@@ -10,7 +10,7 @@ const EditEmail = ({modal}) => {
 
     useEffect(() => {
         fetch(
-          `http://localhost:5000/userdata?email=${user?.email}`
+          `https://instabook-server.vercel.app/userdata?email=${user?.email}`
         )
           .then((res) => res.json())
           .then((data) => setReviews(data));
@@ -20,7 +20,7 @@ const EditEmail = ({modal}) => {
         setNewEmail(event.target.value);
       };
       const HandleUpdate = (id) => {
-        fetch(`http://localhost:5000/editemail/${id}`, {
+        fetch(`https://instabook-server.vercel.app/editemail/${id}`, {
           method: "PATCH",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ updatedEmail: newEmail}),

@@ -37,7 +37,7 @@ const Register = () => {
     }
 
     const socialLogin = (user) =>{
-        fetch('http://localhost:5000/users', {
+        fetch('https://instabook-server.vercel.app/users', {
             method: "POST",
             headers:{
                 'content-type': 'application/json'
@@ -87,7 +87,7 @@ const Register = () => {
 
     const saveUser = (email, password, photoURL, displayName, lastName, university, address) =>{
         const userData = {email, password, photoURL, displayName, lastName, university, address};
-        fetch('http://localhost:5000/users', {
+        fetch('https://instabook-server.vercel.app/users', {
             method: "POST",
             headers:{
                 'content-type': 'application/json'
