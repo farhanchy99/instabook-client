@@ -1,0 +1,9 @@
+.upload-button{
+    transition: 0.2s;
+}
+
+.upload-button input[type = "file"]{
+    left: 0%;
+    top: 0%;
+    opacity: 0;
+}
