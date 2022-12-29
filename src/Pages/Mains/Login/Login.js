@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import useTitle from '../../../hooks/useTitle';
+import { faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
  
 
 const Login = () => {
@@ -43,7 +45,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 swal({
-                    title: "Successfully Registered",
+                    title: "Successfully Login",
                     button: "OK",
                     icon: "success"
                 });
@@ -95,8 +97,7 @@ const Login = () => {
                     </label>
                 </form>
                 <div className='divider'>OR</div>
-                <button onClick={handleGoogleSignIn} className='btn bg-green-500 mb-5'>Continue with Google</button>
-                <button className='btn bg-green-500'>Continue with GitHub</button>  
+                    <button onClick={handleGoogleSignIn} className='btn bg-sky-400 hover:bg-sky-500 mb-5 border-0'><FontAwesomeIcon onClick={handleGoogleSignIn} icon={faGoogle} className="mr-5"></FontAwesomeIcon>Google</button> 
                 </div>
             </div>
             </div>

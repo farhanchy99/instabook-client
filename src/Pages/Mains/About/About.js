@@ -22,8 +22,8 @@ const About = () => {
     })
 
     return (
-        <div>
-            <div className="card w-96 bg-base-100 shadow-xl m-auto my-10">
+        <div className=' px-5 lg:px-0'>
+            <div className="card w-full lg:w-96 bg-base-100 shadow-xl m-auto my-10">
                 {
                     usersData.map( p=>
                         <div className='py-10' key={p._id}>

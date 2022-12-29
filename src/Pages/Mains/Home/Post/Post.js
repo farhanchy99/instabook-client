@@ -60,7 +60,7 @@ const Post = () => {
         <div>
             <div className=''>
         <div>
-            <div className='my-10 '>
+            <div className='my-10'>
             <form onSubmit={handleSubmit(handlePro)}>
                 <div className='card-body w-11/12 lg:w-3/5 bg-base-100 shadow-2xl rounded-2xl p-4 m-auto my-10'>
 

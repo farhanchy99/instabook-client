@@ -19,15 +19,15 @@ const Media = () => {
     return (
         <div>
             <div className="grid grid-cols-4 gap-4">
-                <div>
+                <div className='hidden lg:block'>
                     <LeftNav></LeftNav>
                 </div>
-                <div className='col-span-3 my-10'>
-                <h1 className='text-xl mb-5 text-violet-500'>Top Posts</h1>
-                <div class="grid grid-cols-3 gap-4">
+                <div className='col-span-4 lg:col-span-3 my-10 px-5 lg:px-0'>
+                <h1 className='text-xl mb-5 text-violet-500'>Recent Posts</h1>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {
                     posts.map( p=>
-                        <div className="card w-80 bg-base-100 shadow-xl" key={p._id}>
+                        <div className="card w-full lg:w-80 bg-base-100 shadow-xl" key={p._id}>
                             <div className='px-10 py-5'>
                             <h2> <span className="font-bold">{p.userName}</span> posted</h2>
                             <p className='text-xs'>{p.time}</p>
@@ -41,12 +41,6 @@ const Media = () => {
                                     <FontAwesomeIcon icon={farHeart} className="text-red-600 mr-1"></FontAwesomeIcon>
                                     <p className='text-xs text-gray-400 mb-1'>{p.likes} Likes</p>
                                 </div>
-
-                                <div className='flex'>
-                                    <FontAwesomeIcon icon={faComment} className="text-indigo-500 mr-1"></FontAwesomeIcon>
-                                    <p className='text-xs text-gray-400 mb-1'>Likes</p>
-                                </div>
-                                
                             </div>
                         </div>
                         </div>

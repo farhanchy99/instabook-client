@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { faGoogle, faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -11,10 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Register = () => {
     const { register, formState: {errors}, handleSubmit } = useForm();
     const [error, setError] = useState('')
-    const [role, setRole] = useState();
     const {createUser, updateUserProfile, providerLogin} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
-    const gitHubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -36,22 +34,6 @@ const Register = () => {
               });
             setError(error);
         });
-    }
-
-    const handleGitHubSignIn = () =>{
-        providerLogin(gitHubProvider)
-        .then(result=>{
-            const user = result.user;
-            swal({
-                title: "Successfully Login",
-                button: "OK",
-                icon: "success"
-              });
-            setError("");
-            navigate(from, {replace: true});
-            console.log(user);
-        })
-        .catch(error => console.error(error))
     }
 
     const socialLogin = (user) =>{
@@ -196,14 +178,8 @@ const Register = () => {
                         
                         <div className='divider'>OR</div>
                         <div className='text-center'>
-                            <h1>Login With</h1>
-                            <button>
-                                <FontAwesomeIcon onClick={handleGoogleSignIn} icon={faGoogle} className="mr-5"></FontAwesomeIcon>
-                            </button>
-                            
-                            <button>
-                                <FontAwesomeIcon onClick={handleGitHubSignIn} icon={faGithub} className=""></FontAwesomeIcon> 
-                            </button> 
+                            <h1 className='mb-5 font-bold text-violet-400'>Login With</h1>
+                            <button onClick={handleGoogleSignIn} className='btn bg-sky-400 hover:bg-sky-500 mb-5 border-0'><FontAwesomeIcon onClick={handleGoogleSignIn} icon={faGoogle} className="mr-5"></FontAwesomeIcon>Google</button>  
                         </div>
                     </form>
                     </div>

@@ -13,7 +13,7 @@ const TopPost = () => {
     const { data: posts =[]} = useQuery({
         queryKey: ['posts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/posts');
+            const res = await fetch('http://localhost:5000/topposts');
             const data = await res.json();
             return data;
         }
@@ -21,10 +21,10 @@ const TopPost = () => {
 
     return (
         <div className='my-10'>
-            <div class="grid grid-cols-3 gap-4 my-10">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 my-10">
                 {
                     posts.slice(0,3).map( p=>
-                        <div className="card w-80 bg-base-100 shadow-xl" key={p._id}>
+                        <div className="card w-full lg:w-80 bg-base-100 shadow-xl" key={p._id}>
                             <div className='px-10 py-5'>
                             <h2> <span className="font-bold">{p.userName}</span> posted</h2>
                             <p className='text-xs'>{p.time}</p>
@@ -34,10 +34,10 @@ const TopPost = () => {
                             
                             <p className='text-sm'>{p.details.slice(0, 100) + '...'} <Link to={`/posts/${p._id}`} className="font-bold text-violet-500">Read More</Link></p>
                             <div className="card-actions justify-end"> 
-                                {p.likes? <FontAwesomeIcon icon={faHeart} className="text-4xl font-bold text-green-500"></FontAwesomeIcon> : <FontAwesomeIcon icon={farHeart} className="text-4xl font-bold text-green-500"></FontAwesomeIcon>
-
-                                }
-                                <FontAwesomeIcon icon={faComment} className="text-4xl font-bold text-green-500"></FontAwesomeIcon>
+                                <div className='flex'>
+                                    <FontAwesomeIcon icon={farHeart} className="text-red-600 mr-1"></FontAwesomeIcon>
+                                    <p className='text-xs text-gray-400 mb-1'>{p.likes} Likes</p>
+                                </div>
                             </div>
                         </div>
                         </div>
